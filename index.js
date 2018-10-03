@@ -28,8 +28,8 @@ client.on('guildMemberAdd', async (member) => {
 	
   let guild = member.guild;
   let server = member.guild.name;
-  member.addRole(`496863657347645471`);
   let logs = guild.channels.find(c => c.name === 'logs');
+member.addRole(`496863657347645471`);
   let gembed = new Discord.RichEmbed()
       .setTitle("User Enterance")
       .setColor("#2387c3")
