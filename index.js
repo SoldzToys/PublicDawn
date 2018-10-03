@@ -20,9 +20,9 @@ client.on('message', async (message) => {
 	.addField("Ping Speed", 'Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`')
 	  message.channel.send(pingembed);
 
-        }
+  });
 	
-	client.on('message', async (member) => {
+client.on("guildMemberAdd", (member) => {
 	
   let guild = member.guild;
   let server = member.guild.name;
