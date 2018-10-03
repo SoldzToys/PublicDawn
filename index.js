@@ -16,7 +16,7 @@ client.on('message', async (message) => {
 	let pingembed = new Discord.RichEmbed()
 	.setTitle("PONG!") 	 
 	.setColor("#2387c3")
-	.addField("Your Ping:" 'Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`')
+	.addField("Your Ping:", 'Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`')
 	.addField("Bot Ping:", Math.floor(botping) + 'ms')
 	  message.channel.send(pingembed);
   }
