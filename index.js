@@ -24,8 +24,8 @@ client.on('guildMemberAdd', async (member) => {
 	
   let guild = member.guild;
   let server = member.guild.name;
-  member.addRole(`496801148607397890`);
-  var logs = guild.channels.find(c => c.name === 'logs');
+  member.addRole(`496863657347645471`);
+  var logs = guild.channels.find(c => c.name === 'testlogs');
   if (!logs) return console.log("I can't find logs channel.")
   let gembed = new Discord.RichEmbed()
       .setTitle("Member Enterance")
