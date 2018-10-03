@@ -22,7 +22,7 @@ client.on('message', async (message) => {
 
         }
 	
-	client.on('guildMemberAdd', async (member) => {
+	client.on('message', async (member) => {
 	
   let guild = member.guild;
   let server = member.guild.name;
@@ -35,6 +35,5 @@ client.on('message', async (message) => {
       .setTimestamp(new Date())
   logs.send(gembed);
 	});
-}
             });     
 client.login(process.env.BOT_TOKEN);
