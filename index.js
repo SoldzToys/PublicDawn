@@ -14,7 +14,7 @@ client.on('message', async (message) => {
   
   if (message.content ===(`${prefix}ping`)) {
 	let pingembed = new Discord.RichEmbed()
-	let botping = new Date() - message.createdAt;
+	let botping = new Date()
 	.setTitle("PONG!") 	 
 	.setColor("#2387c3")
 	.addField("Your Ping:", 'Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`')
