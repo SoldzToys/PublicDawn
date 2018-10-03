@@ -34,6 +34,7 @@ client.on('guildMemberAdd', (member) => {
       .setTimestamp(new Date())
   logs.send(gembed);
 	});
-}
-            });     
+
+            });
 client.login(process.env.BOT_TOKEN);
+
