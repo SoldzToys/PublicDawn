@@ -11,7 +11,7 @@ client.user.setActivity('?');
 });
 
 client.on('message', async (message) => {
-client.on('guildMemberAdd', (member) => {
+
   
   if (message.content ===(`${prefix}ping`)) {
 	let pingembed = new Discord.RichEmbed()
@@ -21,6 +21,7 @@ client.on('guildMemberAdd', (member) => {
 	  message.channel.send(pingembed);
 
         }
+	client.on('guildMemberAdd', async (member) => {
 	
   let guild = member.guild;
   let server = member.guild.name;
@@ -32,7 +33,6 @@ client.on('guildMemberAdd', (member) => {
       .setDescription(`Welcome ${member}, to **${server}**, hope you enjoy your stay.`)
       .setTimestamp(new Date())
   logs.send(gembed);
-}
 	});
         
             });     
