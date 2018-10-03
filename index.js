@@ -21,7 +21,7 @@ client.on('message', async (message) => {
 	  message.channel.send(pingembed);
   }
 	
-client.on("guildMemberAdd", (member) => {
+client.on('guildMemberAdd', (member) => {
 	
   let guild = member.guild;
   let server = member.guild.name;
@@ -34,5 +34,6 @@ client.on("guildMemberAdd", (member) => {
       .setTimestamp(new Date())
   logs.send(gembed);
 	});
+}
             });     
 client.login(process.env.BOT_TOKEN);
