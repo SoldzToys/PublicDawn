@@ -28,14 +28,14 @@ client.on('guildMemberAdd', (member) => {
 	
   let guild = member.guild;
   let server = member.guild.name;
-  let logs = guild.channels.find(c => c.name === 'logging');
+  let logging = guild.channels.find(c => c.name === 'logging');
 member.addRole(`496863657347645471`);
   let gembed = new Discord.RichEmbed()
       .setTitle("User Enterance")
       .setColor("#2387c3")
       .setDescription(`Welcome ${member}, to **${server}**, hope you enjoy your stay.`)
       .setTimestamp(new Date())
-  logs.send(gembed);
+  logging.send(gembed);
 	      });
 	
            
