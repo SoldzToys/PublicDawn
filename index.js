@@ -15,9 +15,10 @@ client.on('message', async (message) => {
   if (message.content ===(`${prefix}ping`)) {
 if(guild.systemChannel){
 	guild.systemChannel.send(new Discord.RichEmbed() 
-	.setTitle("PONG!") 
-  .setColor("#2387c3")
-	.setDescription('Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`');
+	.setTitle("PONG!") 	 
+	.setColor("#2387c3")
+	message.channel.send('Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`);
+
         }
         
             });     
