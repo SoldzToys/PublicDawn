@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const request = require('snekfetch');
 const config = require('./botconfig.json');
 const { prefix, token } = require('./botconfig.json');
 
@@ -24,7 +23,7 @@ client.on('message', async (message) => {
   }
 	   });
 	
-client.on('guildMemberAdd', async (member) => {
+client.on('guildMemberAdd', (member) => {
 	
   let guild = member.guild;
   let server = member.guild.name;
