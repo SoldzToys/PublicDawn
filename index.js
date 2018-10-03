@@ -17,7 +17,7 @@ if(guild.systemChannel){
 	guild.systemChannel.send(new Discord.RichEmbed() 
 	.setTitle("PONG!") 
   .setColor("#2387c3")
-	.setDescription('Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`')
+	.setDescription('Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`'));
         }
         
             });     
