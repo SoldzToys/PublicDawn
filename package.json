@@ -1,0 +1,19 @@
+{
+  "name": "publicdawn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mail.js",
+  "scripts": {
+   "start": "node index.js"
+  },
+  "author": "Soldz",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "fetch": "^1.1.0",
+    "ms": "^2.1.1",
+    "node-fetch": "^2.2.0",
+    "snekfetch": "^4.0.4",
+    "superagent": "^3.8.3"
+  }
+}
