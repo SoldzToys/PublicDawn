@@ -13,6 +13,7 @@
     "fetch": "^1.1.0",
     "ms": "^2.1.1",
     "node-fetch": "^2.2.0",
+    "snekfetch": "^4.0.4",
     "superagent": "^3.8.3"
   }
 }
