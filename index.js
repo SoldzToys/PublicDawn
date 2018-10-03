@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const gembed = require('snekfetch');
+const find = require('snekfetch');
 const config = require('./botconfig.json');
 const { prefix, token } = require('./botconfig.json');
 
