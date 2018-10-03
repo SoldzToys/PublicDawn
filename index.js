@@ -11,7 +11,7 @@ client.user.setActivity('?');
 });
 
 client.on('message', async (message) => {
-client.on('guildMemberAdd', async (member) => {
+client.on('guildMemberAdd', (member) => {
   
   if (message.content ===(`${prefix}ping`)) {
 	let pingembed = new Discord.RichEmbed()
