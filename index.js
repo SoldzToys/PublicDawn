@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const find = require('snekfetch');
+const require = require('snekfetch');
 const config = require('./botconfig.json');
 const { prefix, token } = require('./botconfig.json');
 
@@ -28,7 +28,7 @@ client.on('guildMemberAdd', async (member) => {
 	
   let guild = member.guild;
   let server = member.guild.name;
-  let logs = guild.channels.find(c => c.name === 'logs');
+  let logs = guild.channels.require(c => c.name === 'logs');
 member.addRole(`496863657347645471`);
   let gembed = new Discord.RichEmbed()
       .setTitle("User Enterance")
