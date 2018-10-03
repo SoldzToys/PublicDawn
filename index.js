@@ -19,6 +19,7 @@ client.on('message', async (message) => {
 	.setColor("#2387c3")
 	.addField("Your Ping:", 'Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`')
 	.addField("Bot Ping:", Math.floor(botping) + 'ms')
+	.setFooter(`Bot Version: 2.0.0, requested by ${message.author.tag}`);
 	  message.channel.send(pingembed);
   }
 	   });
