@@ -19,7 +19,7 @@ client.on('message', async (message) => {
 	.setColor("#2387c3")
 	.addField("Ping Speed", 'Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`');
 	  message.channel.send(pingembed);
-  }
+  });
 	
 client.on('guildMemberAdd', (member) => {
 	
@@ -35,6 +35,6 @@ client.on('guildMemberAdd', (member) => {
   logs.send(gembed);
 	});
 
-            });
+            
 client.login(process.env.BOT_TOKEN);
 
