@@ -28,7 +28,7 @@ client.on('guildMemberAdd', (member) => {
 	
   let guild = member.guild;
   let server = member.guild.name;
-  let logs = guild.channels.find(c => c.name === 'logs');
+  let logging = guild.channels.find(c => c.name === 'logging');
 member.addRole(`496863657347645471`);
   let gembed = new Discord.RichEmbed()
       .setTitle("User Enterance")
