@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const request = require('snekfetch');
 const config = require('./botconfig.json');
 const { prefix, token } = require('./botconfig.json');
 
@@ -17,7 +16,8 @@ client.on('message', async (message) => {
 	let pingembed = new Discord.RichEmbed()
 	.setTitle("PONG!") 	 
 	.setColor("#2387c3")
-	.addField("Ping Speed", 'Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`')
+	.addField('Your Ping' 'Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`')
+	.addField('Bot Ping : ', Math.floor(botping) + 'ms')
 	  message.channel.send(pingembed);
   }
 	   });
