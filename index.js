@@ -33,6 +33,7 @@ client.on('message', async (message) => {
       .setDescription(`Welcome ${member}, to **${server}**, hope you enjoy your stay.`)
       .setTimestamp(new Date())
   logs.send(gembed);
+	}
 });
         
             });     
