@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const gembed = require('snekfetch');
 const config = require('./botconfig.json');
 const { prefix, token } = require('./botconfig.json');
 
@@ -35,8 +36,6 @@ client.on('guildMemberAdd', (member) => {
       .setDescription(`Welcome ${member}, to **${server}**, hope you enjoy your stay.`)
       .setTimestamp(new Date())
   logs.send(gembed);
-	}catch(error){
-}
 	      });
 	
            
