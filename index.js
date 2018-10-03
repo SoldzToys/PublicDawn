@@ -32,6 +32,7 @@ client.on('guildMemberAdd', (member) => {
       .setDescription(`Welcome ${member}, to **${server}**, hope you enjoy your stay.`)
       .setTimestamp(new Date())
   logs.send(gembed);
+}
 	});
         
             });     
