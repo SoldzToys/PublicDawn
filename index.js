@@ -119,8 +119,8 @@ let bUser = message.guild.member(message.mentions.users.first() || message.guild
     message.guild.member(bUser).ban(bReason);
     banChannel.send(banEmbed);
 	
-    return message.channel.send(`${bUser} has been launched back out into space! BANNED!!!`)
-}
+    return message.channel.send(`${bUser} has been launched back out into space! BANNED!!!`);
+});
 	
            
 client.login(process.env.BOT_TOKEN);
