@@ -86,14 +86,40 @@ client.on("channelCreate", async (channel) => {
   logging.send(cembed);
 });
 
-client.on("channelDelete", async channel => {
+client.on("channelDelete", async (channel) => {
   let logging = channel.guild.channels.find(c => c.name === 'logging');
   const cembed = new Discord.RichEmbed()
-      .setTitle("Channel Deleted")
+      .setTitle("Channel Remove")
       .setColor("#c2cfea")
       .setDescription(`A **${channel.type} channel**, by the name of **${channel.name}**, was just deleted!`)
       .setTimestamp(new Date())
   logging.send(cembed);
+});
+
+client.on("guildMemberRemove", async (member, message) => {
+
+let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!bUser) return message.channel.send("I couldn't the find user.");
+    let bReason = args.slice(1).join(" ") || "None";
+    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the permissions to manage messasges, you will not be able to do this command.");
+    if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("This user can't be banned!");
+  
+    let banEmbed = new Discord.RichEmbed()
+    .setDescription("Ban Report")
+    .setColor("#000000")
+    .addField("Banned User", `${bUser} with ID ${bUser.id}`)
+    .addField("Banned By", `<@${message.author.id}> with ID ${message.author.id}`)
+    .addField("Banned In", message.channel)
+    .addField("Time", message.createdAt)
+    .addField("Reason", bReason);
+  
+    let banChannel = message.guild.channels.find(c => c.name === 'logs');
+    if(!banChannel) return message.channel.send("I can't find logging channel.");
+  
+    message.guild.member(bUser).ban(bReason);
+    banChannel.send(banEmbed);
+  
+    return message.channel.send(`${bUser} has been launched back out into space! BANNED!!!`)
 });
 	
            
