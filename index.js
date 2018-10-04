@@ -50,6 +50,51 @@ client.on('guildMemberRemove', (member) => {
       .setTimestamp(new Date())
   logging.send(gembed);
 	      });
+
+client.on('messageDelete', async (message) => {
+    let logging = message.guild.channels.find(c => c.name === 'logging');
+    const dembed = new Discord.RichEmbed()
+        .setTitle("Message Deleted")
+        .setColor("#2387c3")
+        .setDescription(`A message sent by ${message.author} was deleted in ${message.channel}`)
+        .addField("Message:", `${message.cleanContent}`)
+        .setTimestamp(new Date());
+    logging.send(dembed);
+});
+
+client.on("messageUpdate", function (oldMessage, newMessage, channel) {
+    if (newMessage.channel.type == 'text' && newMessage.cleanContent != oldMessage.cleanContent) {
+        let logging = newMessage.guild.channels.find(c => c.name === 'logging');
+        const eembed = new Discord.RichEmbed()
+            .setTitle("Message Edited")
+            .setColor("#2387c3")
+            .setDescription(`A message sent by ${newMessage.author} was edited in ${newMessage.channel}`)
+            .addField(`Old message:`, `${oldMessage.cleanContent}`)
+            .addField(`New Message:`, `${newMessage.cleanContent}`)
+            .setTimestamp(new Date())
+        logging.send(eembed);
+    }
+});
+
+client.on("channelCreate", async (channel) => {
+  let logging = channel.guild.channels.find(c => c.name === 'logging');
+  const cembed = new Discord.RichEmbed()
+      .setTitle("Channel Created")
+      .setColor("#2387c3")
+      .setDescription(`A **${channel.type} channel**, by the name of **${channel.name}**, was just created!`)
+      .setTimestamp(new Date());
+  logging.send(cembed);
+});
+
+bot.on("channelDelete", async channel => {
+  let logging = channel.guild.channels.find(c => c.name === 'logging');
+  const cembed = new Discord.RichEmbed()
+      .setTitle("Channel Deleted")
+      .setColor("#2387c3")
+      .setDescription(`A **${channel.type} channel**, by the name of **${channel.name}**, was just deleted!`)
+      .setTimestamp(new Date())
+  logging.send(cembed);
+});
 	
            
 client.login(process.env.BOT_TOKEN);
