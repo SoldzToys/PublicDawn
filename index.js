@@ -46,7 +46,7 @@ client.on('guildMemberRemove', (member) => {
   let gembed = new Discord.RichEmbed()
       .setTitle("User Departure")
       .setColor("#2387c3")
-      .setDescription(`Too bad that you have decided to go, maybe one day you'll return to us. But for now,
+      .setDescription(`Too bad that ${member} has decided to go, maybe one day you'll return to us. But for now,
 au revoir.`)
       .setTimestamp(new Date())
   logging.send(gembed);
