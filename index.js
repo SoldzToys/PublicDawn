@@ -32,7 +32,7 @@ member.addRole(`496863657347645471`);
   let logging = guild.channels.find(c => c.name === 'logging');
   let gembed = new Discord.RichEmbed()
       .setTitle("User Enterance")
-      .setColor("#2387c3")
+      .setColor("#c2c5ea")
       .setDescription(`Welcome ${member}, to **${server}**, hope you enjoy your stay.`)
       .setTimestamp(new Date())
   logging.send(gembed);
@@ -45,7 +45,7 @@ client.on('guildMemberRemove', (member) => {
   let logging = guild.channels.find(c => c.name === 'logging');
   let gembed = new Discord.RichEmbed()
       .setTitle("User Departure")
-      .setColor("#2387c3")
+      .setColor("#c2c5ea")
       .setDescription(`Too bad that ${member} has decided to go, maybe one day you'll return to us. But for now, au revoir.`)
       .setTimestamp(new Date())
   logging.send(gembed);
@@ -55,7 +55,7 @@ client.on('messageDelete', async (message) => {
     let logging = message.guild.channels.find(c => c.name === 'logging');
     const dembed = new Discord.RichEmbed()
         .setTitle("Message Deleted")
-        .setColor("#2387c3")
+        .setColor("#dcc2ea")
         .setDescription(`A message sent by ${message.author} was deleted in ${message.channel}`)
         .addField("Message:", `${message.cleanContent}`)
         .setTimestamp(new Date());
@@ -67,7 +67,7 @@ client.on("messageUpdate", function (oldMessage, newMessage, channel) {
         let logging = newMessage.guild.channels.find(c => c.name === 'logging');
         const eembed = new Discord.RichEmbed()
             .setTitle("Message Edited")
-            .setColor("#2387c3")
+            .setColor("#dcc2ea")
             .setDescription(`A message sent by ${newMessage.author} was edited in ${newMessage.channel}`)
             .addField(`Old message:`, `${oldMessage.cleanContent}`)
             .addField(`New Message:`, `${newMessage.cleanContent}`)
@@ -80,7 +80,7 @@ client.on("channelCreate", async (channel) => {
   let logging = channel.guild.channels.find(c => c.name === 'logging');
   const cembed = new Discord.RichEmbed()
       .setTitle("Channel Created")
-      .setColor("#2387c3")
+      .setColor("#c2cfea")
       .setDescription(`A **${channel.type} channel**, by the name of **${channel.name}**, was just created!`)
       .setTimestamp(new Date());
   logging.send(cembed);
@@ -90,7 +90,7 @@ client.on("channelDelete", async channel => {
   let logging = channel.guild.channels.find(c => c.name === 'logging');
   const cembed = new Discord.RichEmbed()
       .setTitle("Channel Deleted")
-      .setColor("#2387c3")
+      .setColor("#c2cfea")
       .setDescription(`A **${channel.type} channel**, by the name of **${channel.name}**, was just deleted!`)
       .setTimestamp(new Date())
   logging.send(cembed);
