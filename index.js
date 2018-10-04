@@ -29,7 +29,7 @@ client.on('guildMemberAdd', (member) => {
   let guild = member.guild;
   let server = member.guild.name;
   let logging = guild.channels.find(c => c.name === 'logging');
-member.addRole(`496863657347645471`)
+member.roles.add(`496863657347645471`)
   let gembed = new Discord.RichEmbed()
       .setTitle("User Enterance")
       .setColor("#2387c3")
@@ -46,8 +46,7 @@ client.on('guildMemberRemove', (member) => {
   let gembed = new Discord.RichEmbed()
       .setTitle("User Departure")
       .setColor("#2387c3")
-      .setDescription(`Too bad that ${member} has decided to go, maybe one day you'll return to us. But for now,
-au revoir.`)
+      .setDescription(`Too bad that ${member} has decided to go, maybe one day you'll return to us. But for now, au revoir.`)
       .setTimestamp(new Date())
   logging.send(gembed);
 	      });
