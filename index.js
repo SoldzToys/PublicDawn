@@ -86,7 +86,7 @@ client.on("channelCreate", async (channel) => {
   logging.send(cembed);
 });
 
-bot.on("channelDelete", async channel => {
+client.on("channelDelete", async channel => {
   let logging = channel.guild.channels.find(c => c.name === 'logging');
   const cembed = new Discord.RichEmbed()
       .setTitle("Channel Deleted")
