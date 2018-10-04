@@ -96,7 +96,7 @@ client.on("channelDelete", async (channel) => {
   logging.send(cembed);
 });
 
-client.on("guildMemberRemove", async (member, message) => {
+client.on("guildMemberRemove", async (member, message, args) => {
 
 let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("I couldn't the find user.");
@@ -106,19 +106,17 @@ let bUser = message.guild.member(message.mentions.users.first() || message.guild
   
     let banEmbed = new Discord.RichEmbed()
     .setDescription("Ban Report")
-    .setColor("#000000")
+    .setColor("#c2dbea")
     .addField("Banned User", `${bUser} with ID ${bUser.id}`)
     .addField("Banned By", `<@${message.author.id}> with ID ${message.author.id}`)
     .addField("Banned In", message.channel)
     .addField("Time", message.createdAt)
     .addField("Reason", bReason);
   
-    let banChannel = message.guild.channels.find(c => c.name === 'logs');
-    if(!banChannel) return message.channel.send("I can't find logging channel.");
-  
+    let banChannel = message.guild.channels.find(c => c.name === 'logging');
     message.guild.member(bUser).ban(bReason);
     banChannel.send(banEmbed);
-  
+	
     return message.channel.send(`${bUser} has been launched back out into space! BANNED!!!`)
 });
 	
