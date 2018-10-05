@@ -101,10 +101,10 @@ client.on('message', async (message, args) => {
 if (message.content === `${prefix}ban`) {
 	
 let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!bUser) return message.channel.send("You haven't @selected a user to ban.");
+    if(!bUser) return message.channel.send("You haven't @selected a user to ban.")
 		
 
 }
           
-client.login(process.env.BOT_TOKEN)
+client.login(process.env.BOT_TOKEN);
 
