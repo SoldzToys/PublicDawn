@@ -96,7 +96,7 @@ client.on("channelDelete", async (channel) => {
   logging.send(cembed);
 });
 
-client.on("guildMemberRemove", async (member, message, args) => {
+client.on("message", async (member, message, args) => {
 	
 if (message.content ===(`${prefix}ban`)) {
 	
@@ -107,7 +107,6 @@ let bUser = message.guild.member(message.mentions.users.first();
 	if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`This user can't be banned! They are either the same rank or higher then you.`);
 
 	
-await member.ban(reason)
 
     let banEmbed = new Discord.RichEmbed()
     .setDescription("Ban Report")
