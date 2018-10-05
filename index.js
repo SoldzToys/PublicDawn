@@ -100,7 +100,7 @@ client.on('message', async (message, args) => {
 	
 if (message.content === `${prefix}ban`) {
 	
-let bUser = message.guild.member(message.mentions.users.first() 
+let bUser = message.guild.member(message.mentions.users.first())
 	if (!bUser) return message.channel.send(`I couldn't the find user.`);
 	if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`You don't have the permissions to manage messasges, you will not be able to do this command.`);
 	if (bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`This user can't be banned! They are either the same rank or higher then you.`);
