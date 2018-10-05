@@ -99,11 +99,10 @@ client.on("channelDelete", async (channel) => {
 client.on('message', async (message) => {
 	
 if (message.content === `${prefix}ban`) {
-	
+	let args = message.content.split(" ").slice(1);
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.reply("You don't have the permissions to manage messasges, you will not be able to do this command.");
 }
-	let args = message.content.split(" ").slice(1);
 	
 	let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("You haven't @selected/mentioned a user to ban.");
