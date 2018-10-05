@@ -98,15 +98,14 @@ client.on("channelDelete", async (channel) => {
 
 client.on("guildMemberRemove", async (member, message, args) => {
 	
-	  
 if (message.content ===(`${prefix}ban`)) {
-let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!bUser) return message.channel.send("I couldn't the find user.");
-    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the permissions to manage messasges, you will not be able to do this command.");
-    if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("This user can't be banned!");
-  
-	let bReason = args.slice(1).join(" ") || "None";
 	
+let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+	if(!bUser) return message.channel.send("I couldn't the find user.");
+	let bReason = args.slice(1).join(" ") || "None";
+	if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the permissions to manage messasges, you will not be able to do this command.");
+	if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("This user can't be banned!");
+
     let banEmbed = new Discord.RichEmbed()
     .setDescription("Ban Report")
     .setColor("#c2dbea")
