@@ -106,8 +106,8 @@ return message.reply("You don't have the permissions to manage messasges, you wi
 	
 	let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("You haven't @selected/mentioned a user to ban.");
-	let args = message.content.split(" ").slice(1);
 	    let bReason = args.slice(1).join(" ") || "None";
+	let args = message.content.split(" ").slice(1);
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the permissions to manage messasges, you will not be able to do this command.");
     if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("This user can't be banned! They are either the same rank or higher then you.");
   
