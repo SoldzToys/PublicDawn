@@ -106,5 +106,5 @@ let bUser = message.guild.member(message.mentions.users.first() || message.guild
 
 }
           
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN)
 
