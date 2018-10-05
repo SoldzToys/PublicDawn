@@ -96,7 +96,7 @@ client.on("channelDelete", async (channel) => {
   logging.send(cembed);
 });
 
-client.on("message", async (member, message, args) => {
+client.on('message', async (message, args) => {
 	
 if (message.content === `${prefix}ban`) {
 	
