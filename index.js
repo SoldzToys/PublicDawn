@@ -127,7 +127,9 @@ return message.reply("You don't have the permissions to manage messasges, you wi
     message.guild.member(bUser).ban(bReason);
     banChannel.send(banEmbed);
   
-    return message.channel.send(`${bUser} has been launched back out into space! BANNED!!!`)	
+    return message.channel.send(`${bUser} has been launched back out into space! BANNED!!!`)
+	
+}
 		
 
 });
