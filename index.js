@@ -96,7 +96,7 @@ client.on("channelDelete", async (channel) => {
   logging.send(cembed);
 });
 
-client.on('message', async (message, args) => {
+client.on('guildBanAdd', async (message, args) => {
 	
 if (message.content === `${prefix}ban`) {
 	
@@ -105,7 +105,7 @@ return message.reply("You don't have the permissions to manage messasges, you wi
 }
 	let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("You haven't @selected/mentioned a user to ban.");
-let bReason = args.join(" ").slice(22);
+  let bReason = args.slice(1).join(" ") || "None";
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the permissions to manage messasges, you will not be able to do this command.");
     if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("This user can't be banned! They are either the same rank or higher then you.");
   
