@@ -100,7 +100,7 @@ client.on("guildMemberRemove", async (member, message, args) => {
 	
 if (message.content ===(`${prefix}ban`)) {
 	
-let bUser = message.guild.member(message.mentions.users.first();
+let bUser = message.guild.member(message.mentions.users.first());
 	if(!bUser) return message.channel.send("I couldn't the find user.");
 	let bReason = args.slice(1).join(" ") || "None";
 	if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the permissions to manage messasges, you will not be able to do this command.");
