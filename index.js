@@ -97,8 +97,9 @@ client.on("channelDelete", async (channel) => {
 });
 
 client.on('message', async (message) => {
+
 	
-if (message.content === `${prefix}ban`) {
+if (!message.content.startsWith(`${prefix}ban`)) 
 
 let args = message.content.slice(1).split(" ");	
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
