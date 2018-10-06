@@ -104,9 +104,9 @@ if (!message.content.startsWith(`${prefix}ban`))
 
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.reply("You don't have the permissions to manage messages, you will not be able to do this command.");
-
+let args = message.content.slice(1).split(" ");
 	
-	let args = message.content.slice(1).split(" ");		
+			
 	let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("You haven't selected/mentioned a user to ban.");
 	    let bReason = args.slice(1).join(" ") || "None";
