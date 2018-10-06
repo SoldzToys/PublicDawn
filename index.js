@@ -181,7 +181,7 @@ return message.reply("You don't have the permissions to manage messages, you wil
 
 let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
   if (!rMember) return message.reply("I couldn't find them.");
-  let role = args.slice(1).join(" ");
+  let role = args.slice(1).join(" ") || "None";
   if(!role) return message.reply("Which role might you want to add?");
   let gRole = message.guild.roles.find(r => r.name === role);
   if (!gRole) return message.reply("I couldn't find them.")
@@ -190,9 +190,9 @@ let rMember = message.guild.member(message.mentions.users.first()) || message.gu
   await(rMember.addRole(gRole.id));
 
   try{
-    await rMember.send(`You've been gifted the ${gRole.name} role.`)
+    await rMember.send(`You've been given the ${gRole.name} role.`)
  }catch(e){
-   message.channel.send(`You've been gifted the <@${rMember.id}> ${gRole.name} role. Those DMs aren't opened though.`)
+   message.channel.send(`You've been given the <@${rMember.id}> ${gRole.name} role. Those DMs aren't opened though.`)
 
  }
 
