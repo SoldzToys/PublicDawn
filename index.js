@@ -195,6 +195,8 @@ let rMember = message.guild.member(message.mentions.users.first()) || message.gu
    message.channel.send(`You've been gifted the <@${rMember.id}> ${gRole.name} role. Those DMs aren't opened though.`)
 
  }
+
+}
           
 });
 	
