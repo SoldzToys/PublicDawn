@@ -198,7 +198,7 @@ let rMember = message.guild.member(message.mentions.users.first()) || message.gu
 
  }
 
-}
+});
           
 });
 	
