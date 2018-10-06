@@ -180,8 +180,8 @@ return message.reply("You don't have the permissions to manage messages, you wil
 	
 
 let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
-  if (!rMember) return message.reply("I couldn't find them.");
-  let role = args.slice(1).join(" ") || "None";
+ if(!rMember) return message.channel.send("You haven't selected/mentioned a user to give a role.");
+  let role = args.slice(1).join(" ") 
   if(!role) return message.reply("Which role might you want to add?");
   let gRole = message.guild.roles.find(r => r.name === role);
   if (!gRole) return message.reply("I couldn't find them.")
