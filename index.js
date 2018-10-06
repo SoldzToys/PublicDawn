@@ -170,11 +170,11 @@ return message.channel.send(`${kUser} has been kicked from the server!`)
 	
 });
 
-client.on('message', async (message, args) => {
+client.on('message', async (message) => {
 	
 if (message.content.startsWith(`${prefix}addrole`)) {
 
-	
+let args = message.content.slice(1).split(" ");	
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 	
@@ -184,7 +184,7 @@ let rMember = message.guild.member(message.mentions.users.first()) || message.gu
   let role = args.slice(1).join(" ") 
   if(!role) return message.channel.send("Which role might you want to add?");
   let gRole = message.guild.roles.find(r => r.name === role);
-  if (gRole) return message.channel.send("I couldn't find them.");
+  if (!gRole) return message.channel.send("I couldn't find them.");
   if(rMember.roles.has(gRole.id));
   return message.channel.send("They already have this role.");
   await(rMember.addRole(gRole.id));
