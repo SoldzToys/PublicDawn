@@ -114,7 +114,7 @@ return message.reply("You don't have the permissions to manage messages, you wil
   
     let banEmbed = new Discord.RichEmbed()
     .setDescription("Ban Report")
-    .setColor("#000000")
+    .setColor("#dcc2ea")
     .addField("Banned User", `${bUser} with ID ${bUser.id}`)
     .addField("Banned By", `<@${message.author.id}> with ID ${message.author.id}`)
     .addField("Banned In", message.channel)
@@ -128,8 +128,42 @@ return message.reply("You don't have the permissions to manage messages, you wil
     message.guild.member(bUser).ban(bReason);
     banChannel.send(banEmbed);
   
-    return message.channel.send(`${bUser} has been launched back out into space! BANNED!!!`)
+    return message.channel.send(`${bUser} has just been hit by the ban-hammer!`)
 	
+}
+	
+client.on('message', async (message) => {
+
+	
+if (message.content.startsWith(`${prefix}kick`)) {
+	
+let args = message.content.slice(1).split(" ");
+if(!message.member.hasPermission("MANAGE_MESSAGES"))
+return message.reply("You don't have the permissions to manage messages, you will not be able to do this command.");
+	
+let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+if(!kUser) return message.channel.send("You haven't selected/mentioned a user to kick.");
+let kReason = args.slice(1).join(" ") || "None";
+if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the permissions to manage messasges, you will not be able to do this command.");
+if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("This user can't be kicked! They are either the same rank or higher then you.");
+
+let kickEmbed = new Discord.RichEmbed()
+.setDescription("Kick Report")
+.setColor("#000000")
+.addField("Kicked User", `${kUser} with ID ${kUser.id}`)
+.addField("Kicked By", `<@${message.author.id}> with ID ${message.author.id}`)
+.addField("Kicked In", message.channel)
+.addField("Time", message.createdAt)
+.addField("Reason", kReason)
+.setTimestamp(new Date());
+
+let kickChannel = message.guild.channels.find(c => c.name === 'logging');
+if(!kickChannel) return message.channel.send("I can't find logging channel.");
+
+message.guild.member(kUser).kick(kReason);
+kickChannel.send(kickEmbed);
+
+return message.channel.send(`${kUser} has been kicked from the server!`)
 }
 	
 		
