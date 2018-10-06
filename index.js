@@ -96,10 +96,10 @@ client.on("channelDelete", async (channel) => {
   logging.send(cembed);
 });
 
-let prefix = ";"
 client.on('message', async (message) => {
 	
 if (message.content === `${prefix}ban`) {
+if (!message.content.startsWith(prefix) || message.author.bot) return;	
 	
 let args = message.content.slice(1).split(" ");	
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
