@@ -130,7 +130,7 @@ return message.reply("You don't have the permissions to manage messages, you wil
   
     return message.channel.send(`${bUser} has just been hit by the ban-hammer!`)
 	
-}
+});
 	
 client.on('message', async (message) => {
 
@@ -149,7 +149,7 @@ if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("This use
 
 let kickEmbed = new Discord.RichEmbed()
 .setDescription("Kick Report")
-.setColor("#000000")
+.setColor("#dcc2ea")
 .addField("Kicked User", `${kUser} with ID ${kUser.id}`)
 .addField("Kicked By", `<@${message.author.id}> with ID ${message.author.id}`)
 .addField("Kicked In", message.channel)
@@ -164,6 +164,7 @@ message.guild.member(kUser).kick(kReason);
 kickChannel.send(kickEmbed);
 
 return message.channel.send(`${kUser} has been kicked from the server!`)
+
 }
 	
 		
