@@ -103,7 +103,7 @@ if (message.content.startsWith(`${prefix}ban`)) {
 
 let args = message.content.slice(1).split(" ");
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
-return message.reply("You don't have the permissions to manage messages, you will not be able to do this command.");
+return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 
 			
 	let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -140,7 +140,7 @@ if (message.content.startsWith(`${prefix}kick`)) {
 	
 let args = message.content.slice(1).split(" ");
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
-return message.reply("You don't have the permissions to manage messages, you will not be able to do this command.");
+return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 	
 let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 if(!kUser) return message.channel.send("You haven't selected/mentioned a user to kick.");
@@ -176,12 +176,12 @@ if (message.content.startsWith(`${prefix}addrole`)) {
 	
 let args = message.content.slice(1).split(" ");
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
-return message.reply("You don't have the permissions to manage messages, you will not be able to do this command.");
+return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 	
 
 let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
  if(!rMember) return message.channel.send("You haven't selected/mentioned a user to give a role.");
-  let role = args.slice(1).join(" ") 
+  let role = args.slice(1).join(" ") || "None";
   if(!role) return message.reply("Which role might you want to add?");
   let gRole = message.guild.roles.find(r => r.name === role);
   if (!gRole) return message.reply("I couldn't find them.")
