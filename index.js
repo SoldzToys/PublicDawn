@@ -185,7 +185,7 @@ let rMember = message.mentions.members.first()
   if(!role) return message.channel.send("Which role might you want to add?");
   let gRole = message.guild.roles.find(r => r.name === role);
   if (!gRole) return message.channel.send("I couldn't find them.");
-  if(rMember.roles.has(gRole.id)) {
+  if(rMember.roles.has(gRole.id));
   return message.channel.send("They already have this role.");
   } else {
   await(rMember.addRole(gRole.id));
@@ -195,7 +195,7 @@ let rMember = message.mentions.members.first()
  }catch(e){
    message.channel.send(`You've been given the <@${rMember.id}> ${gRole.name} role. Those DMs aren't opened though.`)
 
- }
+ 
  }
 
           
