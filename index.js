@@ -173,7 +173,8 @@ return message.channel.send(`${kUser} has been kicked from the server!`)
 client.on('message', async (message, args) => {
 	
 if (message.content.startsWith(`${prefix}addrole`)) {
-	
+
+let args = message.content.slice(1).split(" ");	
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 	
