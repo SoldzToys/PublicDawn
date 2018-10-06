@@ -167,6 +167,29 @@ kickChannel.send(kickEmbed);
 return message.channel.send(`${kUser} has been kicked from the server!`)
 
 }
+	
+});
+
+client.on('message', async (message) => {
+	
+if (message.content.startsWith(`${prefix}addrole`)) {
+	
+let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
+  if (!rMember) return message.reply("I couldn't find them.");
+  let role = args.slice(1).join(" ");
+  if(!role) return message.reply("Which role might you want to add?");
+  let gRole = message.guild.roles.find(r => r.name === role);
+  if (!gRole) return message.reply("I couldn't find them.")
+  if(rMember.roles.has(gRole.id))
+  return message.reply("They already have this role.");
+  await(rMember.addRole(gRole.id));
+
+  try{
+    await rMember.send(`You've been gifted the ${gRole.name} role.`)
+ }catch(e){
+   message.channel.send(`You've been gifted the <@${rMember.id}> ${gRole.name} role. Those DMs aren't opened though.`)
+
+ }
           
 });
 	
