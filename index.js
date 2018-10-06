@@ -130,6 +130,8 @@ return message.reply("You don't have the permissions to manage messages, you wil
   
     return message.channel.send(`${bUser} has been launched back out into space! BANNED!!!`)
 	
+}
+	
 		
 
 });
