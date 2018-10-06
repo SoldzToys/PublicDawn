@@ -166,7 +166,5 @@ kickChannel.send(kickEmbed);
 return message.channel.send(`${kUser} has been kicked from the server!`)
 
 }
-	  
-});
           
 client.login(process.env.BOT_TOKEN);
