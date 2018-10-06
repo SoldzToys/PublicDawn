@@ -174,7 +174,7 @@ client.on('message', async (message, args) => {
 	
 if (message.content.startsWith(`${prefix}addrole`)) {
 	
-
+let args = message.content.slice(1).split(" ");
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.reply("You don't have the permissions to manage messages, you will not be able to do this command.");
 	
