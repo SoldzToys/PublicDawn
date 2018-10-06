@@ -170,7 +170,7 @@ return message.channel.send(`${kUser} has been kicked from the server!`)
 	
 });
 
-client.on('message', async (message, args) => {
+client.on('message', async (message) => {
 	
 if (message.content.startsWith(`${prefix}addrole`)) {
 
