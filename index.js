@@ -179,7 +179,7 @@ if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 	
 
-let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
+let rMember = message.mentions.members.first()
  if(!rMember) return message.channel.send("You haven't selected/mentioned a user to give a role.");
   let role = args.slice(1).join(" ") 
   if(!role) return message.channel.send("Which role might you want to add?");
