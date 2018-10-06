@@ -130,10 +130,7 @@ return message.reply("You don't have the permissions to manage messages, you wil
   
     return message.channel.send(`${bUser} has just been hit by the ban-hammer!`)
 	
-}
-	
-client.on('message', async (message) => {
-
+}	
 	
 if (message.content.startsWith(`${prefix}kick`)) {
 	
@@ -167,4 +164,6 @@ return message.channel.send(`${kUser} has been kicked from the server!`)
 
 }
           
+});
+	
 client.login(process.env.BOT_TOKEN);
