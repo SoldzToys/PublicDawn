@@ -96,13 +96,14 @@ client.on("channelDelete", async (channel) => {
   logging.send(cembed);
 });
 
+let prefix = ";"
 client.on('message', async (message) => {
 	
 if (message.content === `${prefix}ban`) {
 	
 let args = message.content.slice(1).split(" ");	
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
-return message.reply("You don't have the permissions to manage messasges, you will not be able to do this command.");
+return message.reply("You don't have the permissions to manage messages, you will not be able to do this command.");
 
 	
 		
