@@ -185,8 +185,9 @@ let rMember = message.guild.member(message.mentions.users.first()) || message.gu
   if(!role) return message.channel.send("Which role might you want to add?");
   let gRole = message.guild.roles.find(r => r.name === role);
   if (!gRole) return message.channel.send("I couldn't find them.");
-  if(!rMember.roles.has(gRole.id));
+  if(rMember.roles.has(gRole.id));
   return message.channel.send("They already have this role.");
+	} else {
   await(rMember.addRole(gRole.id));
 
   try{
