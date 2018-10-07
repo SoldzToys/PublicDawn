@@ -22,6 +22,15 @@ client.on('message', async (message) => {
 	.setTimestamp(new Date());
 	  message.channel.send(pingembed);
   }
+	  if (message.content === `${prefix}avatar`) {
+	   let user = message.mentions.users.first();
+if(!user) return message.channel.send("I couldn't the find user.");
+    let avatarEmbed = new Discord.RichEmbed()
+    .setAuthor(`${user.username}'s Profile Picture`)
+    .setImage(user.displayAvatarURL)
+    .setColor("#ea9b67")
+    return message.channel.send(avatarEmbed);
+}
 	   });
 	
 client.on('guildMemberAdd', (member) => {
