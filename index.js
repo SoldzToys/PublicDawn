@@ -280,7 +280,7 @@ await rMember.addRole(gRole.id)
   try{
     await rMember.send(`You've been given the ${gRole.name} role.`)
  }catch(e){
-	 
+	 message.channel.send(`You've been given the <@${rMember.id}> ${gRole.name} role. Those DMs aren't opened though.`)
  }
 });
 	
