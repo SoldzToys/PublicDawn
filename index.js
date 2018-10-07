@@ -28,7 +28,7 @@ client.on('message', async (message, member) => {
 if(!user) return message.channel.send("You haven't selected/mentioned a user whose avatar you want to see."); 
     let avatarEmbed = new Discord.RichEmbed()
     .setAuthor(`${user.username}'s Profile Picture`)
-    .setImage(`${member.first().user.displayAvatarURL}`)
+    .setImage(user.displayAvatarURL)
     .setColor("#ea9b67")
     .setTimestamp(new Date());
     message.channel.send(avatarEmbed);
@@ -190,7 +190,7 @@ client.on('message', async (message) => {
             let player = message.mentions.members.first() || message.member
             let user = message.mentions.users.first();
             let iicon = player.user.displayAvatarURL;
-            let roles = message.member.roles.map(role => role).join(" ")
+            let roles = message.mentions.members.first().roles.map(role => role).join(" ");
         if(!user) return message.channel.send("You haven't selected/mentioned a user whose info you want to see.");
             let userEmbed = new Discord.RichEmbed()
             .setAuthor(`${user.username}'s Info`, user.displayAvatarURL)
