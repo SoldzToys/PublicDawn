@@ -203,6 +203,25 @@ client.on('message', async (message) => {
 
 client.on('message', async (message) => {
 	
+	if (message.content.startsWith(`${prefix}botinfo`)) {
+
+    let bicon = bot.user.displayAvatarURL;
+    let botembed = new Discord.RichEmbed()
+    .setTitle("Bot Information")
+    .setColor("#dcc2ea")
+    .setThumbnail(bicon)
+    .addField("Bot Name", bot.user.username)
+    .addField("Bot Tag", bot.user.tag)
+    .addField("Date Of Birth", bot.user.createdAt)
+    .addField("Guilds", bot.guilds.size)
+    .addField("Users", bot.users.size)
+    .setTimestamp(new Date());
+    return message.channel.send(botembed);
+  }
+});
+
+client.on('message', async (message) => {
+	
 if (message.content.startsWith(`${prefix}addrole`)) {
 
 let args = message.content.slice(1).split(" ");	
