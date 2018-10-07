@@ -120,6 +120,7 @@ return message.channel.send("You don't have the permissions to manage messages, 
     .addField("Banned In", message.channel)
     .addField("Time", message.createdAt)
     .addField("Reason", bReason)
+    .setThumbnail(bUser.user.displayAvatarURL)
     .setTimestamp(new Date());
   
     let banChannel = message.guild.channels.find(c => c.name === 'logging');
@@ -156,6 +157,7 @@ let kickEmbed = new Discord.RichEmbed()
 .addField("Kicked In", message.channel)
 .addField("Time", message.createdAt)
 .addField("Reason", kReason)
+.setThumbnail(kUser.user.displayAvatarURL)
 .setTimestamp(new Date());
 
 let kickChannel = message.guild.channels.find(c => c.name === 'logging');
