@@ -21,7 +21,7 @@ client.on('message', async (message) => {
 	.setTimestamp(new Date());
 	  message.channel.send(pingembed);
   }
-});
+
 	
 	  if (message.content === `${prefix}avatar`) {
 	   let user = message.mentions.users.first(); 
