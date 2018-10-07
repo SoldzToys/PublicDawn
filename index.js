@@ -24,7 +24,7 @@ client.on('message', async (message) => {
   }
 	  if (message.content === `${prefix}avatar`) {
 	   let user = message.mentions.users.first();
-if(!user) return message.channel.send("I couldn't the find user.");
+if(!user) return message.channel.send("You haven't selected/mentioned a user whose avatar you want to see.");
     let avatarEmbed = new Discord.RichEmbed()
     .setAuthor(`${user.username}'s Profile Picture`)
     .setImage(user.displayAvatarURL)
@@ -189,7 +189,7 @@ client.on('message', async (message) => {
             let user = message.mentions.users.first();
             let iicon = player.user.displayAvatarURL;
             let roles = message.member.roles.map(role => role).join(" ")
-        if(!user) return message.channel.send("You haven't selected/mentioned a user to give a role.");
+        if(!user) return message.channel.send("You haven't selected/mentioned a user whose info you want to see.");
             let userEmbed = new Discord.RichEmbed()
             .setAuthor(`${user.username}'s Info`, user.displayAvatarURL)
             .setThumbnail(user.displayAvatarURL)
