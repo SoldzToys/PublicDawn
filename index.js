@@ -197,8 +197,6 @@ client.on('message', async (message) => {
             .setTimestamp(new Date());
             message.channel.send(userEmbed)
             });
-	  
-});
 
 client.on('message', async (message) => {
 	
