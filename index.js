@@ -187,7 +187,7 @@ client.on('message', async (message) => {
             .setColor('#c2c5ea')
             .addField('ID', user.id, true)
             .addField('Current Tag', user.tag, true)
-            .addField('Server Tag', `${player.displayName}`, true) 
+            .addField('Server Nickname', `${player.displayName}`, true) 
             .addField('Highest Member Role', `${player.highestRole.name}`, true)
             .addField('Roles', `${roles}`)
             .addField('Game/Playing', `${(user.presence.game && user.presence.game && user.presence.game.name) || 'None'}`, true)
