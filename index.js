@@ -212,7 +212,7 @@ client.on('message', async (message) => {
     .setThumbnail(bicon)
     .addField("Bot Name", client.user.username)
     .addField("Bot Tag", client.user.tag)
-    .addField("Date Of Birth", client.user.createdAt.toLocaleString()
+    .addField("Date Of Creation", client.user.createdAt.toLocaleString())
     .addField("Guilds", client.guilds.size)
     .addField("Users", client.users.size)
     .setTimestamp(new Date());
