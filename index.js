@@ -172,6 +172,8 @@ return message.channel.send(`${kUser} has been kicked from the server!`)
 	
 });
 client.on('message', async (message) => {
+	
+	if (message.content.startsWith(`${prefix}userinfo`)) {
 
  let member = message.mentions.users.first() || message.author
             let player = message.mentions.members.first() || message.member
@@ -196,6 +198,7 @@ client.on('message', async (message) => {
             .setThumbnail(iicon)
             .setTimestamp(new Date());
             message.channel.send(userEmbed)
+	}
             });
 
 client.on('message', async (message) => {
