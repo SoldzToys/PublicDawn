@@ -26,10 +26,16 @@ client.on('message', async (message) => {
 	
 	  if (message.content === `${prefix}avatar`) {
 	   let user = message.mentions.users.first(); 
-if(!user) return message.channel.send("You haven't selected/mentioned a user whose avatar you want to see.");
+if(!user) return message.channel.send("You haven't selected/mentioned a user whose avatar you want to see."); 
+let formats = ['webp', 'png', 'jpg'];
+let format = user.avatar && user.avatar.startsWith('a_') ? 'gif' : 'png';
+		  if (format === 'gif') formats.push('gif');
     let avatarEmbed = new Discord.RichEmbed()
     .setAuthor(`${user.username}'s Profile Picture`)
-    .setImage(`${user.displayAvatarURL}`)
+    .setDescription(
+				formats.map(fmt => `[${fmt.toUpperCase()}](${user.displayAvatarURL({ format: fmt, size: 2048 })})`).join(' | ')
+			)
+			.setImage(user.displayAvatarURL({ format, size: 2048 }))
     .setColor("#ea9b67")
     .setTimestamp(new Date());
     message.channel.send(avatarEmbed);
