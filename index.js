@@ -25,7 +25,7 @@ client.on('message', async (message, member) => {
 	
 
 	
-	  if (message.content.startsWith(`${prefix}avatar`) { 
+	  if (message.content.startsWith(`${prefix}avatar`)) { 
 	   let user = message.mentions.users.first(); 
 if(!user) return message.channel.send("You haven't selected/mentioned a user whose avatar you want to see."); 
     let avatarEmbed = new Discord.RichEmbed()
