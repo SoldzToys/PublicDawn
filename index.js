@@ -36,12 +36,6 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
     message.channel.send(avatarEmbed);
 }
 	   });
-client.on('message', async (message, args) => {
-
-  let botmessage = args.join(" ");
-  message.channel.send(botmessage);
-	
-	  });
 	
 client.on('guildMemberAdd', (member) => {
 	
