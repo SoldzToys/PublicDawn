@@ -184,7 +184,7 @@ client.on('message', async (message) => {
             let userEmbed = new Discord.RichEmbed()
             .setAuthor(`${user.username}'s Info`, user.displayAvatarURL)
             .setThumbnail(user.displayAvatarURL)
-            .setColor('#FF8C00')
+            .setColor('#c2c5ea')
             .addField('ID', user.id, true)
             .addField('Current Tag', user.tag, true)
             .addField('Nickname', `${player.displayName}`, true) 
