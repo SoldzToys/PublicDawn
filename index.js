@@ -178,7 +178,7 @@ client.on('message', async (message) => {
             let user = message.mentions.users.first();
             let iicon = player.user.displayAvatarURL;
             let roles = message.member.roles.map(role => role).join(" ")
-        if(!user) return message.channel.send("I couldn't the find user.");
+        if(!user) return message.channel.send("You haven't selected/mentioned a user to give a role.");
             let userEmbed = new Discord.RichEmbed()
             .setAuthor(`${user.username}'s Info`, user.displayAvatarURL)
             .setThumbnail(user.displayAvatarURL)
@@ -196,7 +196,7 @@ client.on('message', async (message) => {
             .setThumbnail(iicon)
             .setTimestamp(new Date());
             message.channel.send(userEmbed)
-            }
+            });
 	  
 });
 
