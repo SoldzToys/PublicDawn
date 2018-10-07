@@ -205,16 +205,16 @@ client.on('message', async (message) => {
 	
 	if (message.content.startsWith(`${prefix}botinfo`)) {
 
-    let bicon = bot.user.displayAvatarURL;
+    let bicon = client.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
     .setTitle("Bot Information")
     .setColor("#dcc2ea")
     .setThumbnail(bicon)
-    .addField("Bot Name", bot.user.username)
-    .addField("Bot Tag", bot.user.tag)
-    .addField("Date Of Birth", bot.user.createdAt)
-    .addField("Guilds", bot.guilds.size)
-    .addField("Users", bot.users.size)
+    .addField("Bot Name", client.user.username)
+    .addField("Bot Tag", client.user.tag)
+    .addField("Date Of Birth", client.user.createdAt)
+    .addField("Guilds", client.guilds.size)
+    .addField("Users", client.users.size)
     .setTimestamp(new Date());
     return message.channel.send(botembed);
   }
