@@ -279,8 +279,7 @@ await rMember.addRole(gRole.id)
   }
   try{
     await rMember.send(`You've been given the ${gRole.name} role.`)
-
-
+  }
 });
 	
 client.login(process.env.BOT_TOKEN);
