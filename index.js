@@ -12,7 +12,6 @@ client.user.setActivity('Before Daybreak: Season 1');
 
 client.on('message', async (message) => {
 
-  
   if (message.content === `${prefix}ping`) {
 	let pingembed = new Discord.RichEmbed()
 	.setTitle("PONG!") 	 
@@ -22,6 +21,9 @@ client.on('message', async (message) => {
 	.setTimestamp(new Date());
 	  message.channel.send(pingembed);
   }
+});
+client.on('message', async (message) => {
+	
 	  if (message.content === `${prefix}avatar`) {
 	   let user = message.mentions.users.first();
 if(!user) return message.channel.send("You haven't selected/mentioned a user whose avatar you want to see.");
