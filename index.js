@@ -260,7 +260,7 @@ client.on('message', async (message) => {
 
 client.on('message', async (message) => {
 	
-if (!message.content.startsWith(`${prefix}addrole`)) {
+if (message.content.startsWith(`${prefix}addrole`)) {
 
 let args = message.content.slice(1).split(" ");	
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
