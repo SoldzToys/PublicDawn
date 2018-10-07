@@ -255,35 +255,5 @@ client.on('message', async (message) => {
     message.channel.send(serverembed);
   }
 });
-
-client.on('message', async (message) => {
-	
-if (message.content.startsWith(`${prefix}addrole`)) {
-
-let args = message.content.slice(1).split(" ");	
-if(!message.member.hasPermission("MANAGE_MESSAGES"))
-return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
-	
-
-let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
- if(!rMember) return message.channel.send("You haven't selected/mentioned a user to give a role.");
-  let role = args.slice(1).join(" ") 
-  if(!role) return message.channel.send("Which role might you want to add?");
-  let gRole = message.guild.roles.find(r => r.name === role);
-  if (!gRole) return message.channel.send("I couldn't find them.");
-  if(rMember.roles.has(gRole.id));
-  return message.channel.send("They already have this role.");
-  await(rMember.addRole(gRole.id));
-  }
-  try{
-    await rMember.send(`You've been given the ${gRole.name} role.`)
- }catch(e){
-   message.channel.send(`You've been given the <@${rMember.id}> ${gRole.name} role. Those DMs aren't opened though.`)
-
- 
- }
-
-          
-});
 	
 client.login(process.env.BOT_TOKEN);
