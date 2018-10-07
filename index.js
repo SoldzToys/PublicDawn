@@ -31,6 +31,7 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
     .setAuthor(`${user.username}'s Profile Picture`)
     .setImage(user.displayAvatarURL)
     .setColor("#ea9b67")
+    .setTimestamp(new Date());
     message.channel.send(avatarEmbed);
 }
 	   });
