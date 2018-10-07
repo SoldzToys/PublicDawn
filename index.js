@@ -222,6 +222,31 @@ client.on('message', async (message) => {
 
 client.on('message', async (message) => {
 	
+	if (message.content.startsWith(`${prefix}serverinfo`)) {
+		
+    let sicon = message.guild.iconURL;
+    let server = message.guild.name;
+    let serverembed = new Discord.RichEmbed()
+    .setTitle("Server Information")
+    .setDescription(`Infomration on ${server}:`)
+    .setThumbnail() 
+    .setColor("#c2dbea")
+    .addField('Guild ID', message.guild.id, true)
+    .addField('Guild Name', message.guild.name, true)
+    .addField('Guild Channel Total', message.guild.channels.size, true)
+    .addField('Guild Member Total', message.guild.memberCount, true)
+    .addField('Guild Role Total', message.guild.roles.size, true)
+    .addField('Guild Region', message.guild.region, true)
+    .addField('Guild Owner', message.guild.owner, true)
+    .addField('Date Of Server Creation', message.guild.createdAt.toLocaleDateString(), true)
+    .setThumbnail(sicon) 
+    .setTimestamp(new Date());
+    message.channel.send(serverembed);
+  }
+});
+
+client.on('message', async (message) => {
+	
 if (message.content.startsWith(`${prefix}addrole`)) {
 
 let args = message.content.slice(1).split(" ");	
