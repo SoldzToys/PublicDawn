@@ -196,7 +196,7 @@ client.on('message', async (message) => {
             .setThumbnail(iicon)
             .setTimestamp(new Date());
             message.channel.send(userEmbed)
-            }        
+            })
 });
 
 client.on('message', async (message) => {
