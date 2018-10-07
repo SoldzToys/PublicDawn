@@ -28,8 +28,8 @@ client.on('message', async (message) => {
 	   let user = message.mentions.users.first();
 if(!user) return message.channel.send("You haven't selected/mentioned a user whose avatar you want to see.");
     let avatarEmbed = new Discord.RichEmbed()
-    .setAuthor(`${user.username}`)
-    .setImage(user.displayAvatarURL)
+    .setAuthor(`${user.username}'s Profile Picture`)
+    .setImage(user.user.displayAvatarURL)
     .setColor("#ea9b67")
     .setTimestamp(new Date());
     message.channel.send(avatarEmbed);
