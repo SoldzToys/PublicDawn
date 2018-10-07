@@ -41,7 +41,6 @@ client.on('message', async (message, args) => {
   let botmessage = args.join(" ");
   message.channel.send(botmessage);
 	
-}
 	  });
 	
 client.on('guildMemberAdd', (member) => {
