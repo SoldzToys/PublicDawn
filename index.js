@@ -32,10 +32,7 @@ let format = user.avatar && user.avatar.startsWith('a_') ? 'gif' : 'png';
 		  if (format === 'gif') formats.push('gif');
     let avatarEmbed = new Discord.RichEmbed()
     .setAuthor(`${user.username}'s Profile Picture`)
-    .setDescription(
-				formats.map(fmt => `[${fmt.toUpperCase()}](${user.displayAvatarURL({ format: fmt, size: 2048 })})`).join(' | ')
-			)
-			.setImage(user.displayAvatarURL({ format, size: 2048 }))
+    .setImage(user.displayAvatarURL({ format, size: 2048 }))
     .setColor("#ea9b67")
     .setTimestamp(new Date());
     message.channel.send(avatarEmbed);
