@@ -10,7 +10,7 @@ client.user.setActivity('Before Daybreak: Season 1');
 
 });
 
-client.on('message', async (message) => {
+client.on('message', async (message, member) => {
 
   if (message.content === `${prefix}ping`) {
 	let pingembed = new Discord.RichEmbed()
@@ -28,7 +28,7 @@ client.on('message', async (message) => {
 if(!user) return message.channel.send("You haven't selected/mentioned a user whose avatar you want to see."); 
     let avatarEmbed = new Discord.RichEmbed()
     .setAuthor(`${user.username}'s Profile Picture`)
-    .setImage(user.displayAvatarURL)
+    .setImage(`${member.first().user.displayAvatarURL}`)
     .setColor("#ea9b67")
     .setTimestamp(new Date());
     message.channel.send(avatarEmbed);
