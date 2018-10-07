@@ -271,6 +271,7 @@ let rMember = message.mentions.members.first() || message.guild.members.get(args
  if(!rMember) return message.channel.send("You haven't selected/mentioned a user to give a role.");
   let role = args.slice(1).join(" ") 
   if(!role) return message.channel.send("Which role might you want to add?");
+let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
   let gRole = message.guild.roles.find(r => r.name === role);
   if (!gRole) return message.channel.send("I couldn't find them.");
   if(rMember.roles.has(gRole.id));
