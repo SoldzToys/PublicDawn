@@ -185,7 +185,7 @@ client.on('message', async (message) => {
             .setAuthor(`${user.username}'s Info`, user.displayAvatarURL)
             .setThumbnail(user.displayAvatarURL)
             .setColor('#c2c5ea')
-            .addField('Member ID', user.id, true)
+            .addField('User ID', user.id, true)
             .addField('Current Tag', user.tag, true)
             .addField('Server Nickname', `${player.displayName}`, true) 
             .addField('Highest Member Role', `${player.highestRole.name}`, true)
