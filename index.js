@@ -42,14 +42,13 @@ client.on('guildMemberAdd', (member) => {
   let guild = member.guild;
   let server = member.guild.name;
 member.addRole(`496863657347645471`);
-member.addRole(`456990891987697675`);
-  let logging = guild.channels.find(c => c.name === 'welcome');
+  let logging = guild.channels.find(c => c.name === 'logging');
   let gembed = new Discord.RichEmbed()
       .setTitle("User Enterance")
       .setColor("#c2c5ea")
       .setDescription(`Welcome ${member}, to **${server}**, hope you enjoy your stay.`)
       .setTimestamp(new Date())
-  welcome.send(gembed);
+  logging.send(gembed);
 	      });
 
 client.on('guildMemberRemove', (member) => {
