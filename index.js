@@ -257,6 +257,7 @@ client.on('message', async (message) => {
     message.channel.send(serverembed);
   }
 });
+ 
 
 client.on('message', async (message) => {
 	
