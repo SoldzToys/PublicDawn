@@ -279,6 +279,7 @@ let rMember = message.mentions.members.first() || message.guild.members.get(args
 await rMember.addRole(gRole.id)
 }
   try{
+    let role = args.slice(1).join(" ") 
     let gRole = message.guild.roles.find(r => r.name === role);
     await rMember.send(`You've been given the ${gRole.name} role.`)
  }catch(e){
