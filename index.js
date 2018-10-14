@@ -273,7 +273,7 @@ let rMember = message.mentions.members.first() || message.guild.members.get(args
   let role = args.slice(1).join(" ") 
   if(!role) message.channel.send("Which role might you want to add?");
   let gRole = message.guild.roles.find(r => r.name === role);
-  if (!gRole) return message.channel.send("That role doesn't exist.");
+  if (!gRole) return message.channel.send("That role doesn't exist or you aren't spelling the role's name right.");
   if(rMember.roles.has(gRole.id));
   return message.channel.send("They already have this role.");
 await rMember.addRole(gRole.id)
@@ -283,6 +283,7 @@ await rMember.addRole(gRole.id)
     let gRole = message.guild.roles.find(r => r.name === role);
     await rMember.send(`You've been given the ${gRole.name} role.`)
  }catch(e){
+	 let role = args.slice(1).join(" ") 
 	 let args = message.content.slice(1).split(" ");
 	 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
 	 let gRole = message.guild.roles.find(r => r.name === role);
