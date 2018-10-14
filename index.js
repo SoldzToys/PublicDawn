@@ -283,7 +283,7 @@ await rMember.addRole(gRole.id)
  }catch(e){
 	 let args = message.content.slice(1).split(" ");
 	 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
-	 message.channel.send(`You've been given the <@${rMember.id}> ${gRole.name} role. Those DMs aren't opened though.`)
+	 message.channel.send(`You've been given the <@${rMember}> ${gRole.name} role. Those DMs aren't opened though.`)
  }
 });
 	
