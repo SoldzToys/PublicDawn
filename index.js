@@ -18,7 +18,7 @@ if (message.content.startsWith(`${prefix}ping`)) {
 	.setColor("#2387c3")
 	.addField("Ping:", 'Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`')
 	.setFooter(`Bot Version: 2.0.0, requested by ${message.author.tag}`)
-	.setTimestamp(new Date());
+	.setTimestamp();
 	  message.channel.send(pingembed);
   }
 	
@@ -32,7 +32,7 @@ if(!user) return message.channel.send("You haven't selected/mentioned a user who
     .setAuthor(`${user.username}'s Profile Picture`)
     .setImage(user.displayAvatarURL)
     .setColor("#ea9b67")
-    .setTimestamp(new Date());
+    .setTimestamp();
     message.channel.send(avatarEmbed);
 }
 	   });
@@ -47,7 +47,7 @@ member.addRole(`496863657347645471`);
       .setTitle("User Enterance")
       .setColor("#c2c5ea")
       .setDescription(`Welcome ${member}, to **${server}**, hope you enjoy your stay.`)
-      .setTimestamp(new Date())
+      .setTimestamp();
   logging.send(gembed);
 	      });
 
@@ -60,7 +60,7 @@ client.on('guildMemberRemove', (member) => {
       .setTitle("User Departure")
       .setColor("#c2c5ea")
       .setDescription(`Too bad that ${member} has decided to go, maybe one day you'll return to us. But for now, au revoir.`)
-      .setTimestamp(new Date())
+      .setTimestamp()
   logging.send(gembed);
 	      });
 
@@ -71,7 +71,7 @@ client.on('messageDelete', async (message) => {
         .setColor("#dcc2ea")
         .setDescription(`A message sent by ${message.author} was deleted in ${message.channel}`)
         .addField("Message:", `${message.cleanContent}`)
-        .setTimestamp(new Date());
+        .setTimestamp();
     logging.send(dembed);
 });
 
@@ -84,7 +84,7 @@ client.on("messageUpdate", function (oldMessage, newMessage, channel) {
             .setDescription(`A message sent by ${newMessage.author} was edited in ${newMessage.channel}`)
             .addField(`Old message:`, `${oldMessage.cleanContent}`)
             .addField(`New Message:`, `${newMessage.cleanContent}`)
-            .setTimestamp(new Date())
+            .setTimestamp();
         logging.send(eembed);
     }
 });
@@ -95,7 +95,7 @@ client.on("channelCreate", async (channel) => {
       .setTitle("Channel Created")
       .setColor("#c2cfea")
       .setDescription(`A **${channel.type} channel**, by the name of **${channel.name}**, was just created!`)
-      .setTimestamp(new Date());
+      .setTimestamp();
   logging.send(cembed);
 });
 
@@ -105,7 +105,7 @@ client.on("channelDelete", async (channel) => {
       .setTitle("Channel Remove")
       .setColor("#c2cfea")
       .setDescription(`A **${channel.type} channel**, by the name of **${channel.name}**, was just deleted!`)
-      .setTimestamp(new Date())
+      .setTimestamp();
   logging.send(cembed);
 });
 
@@ -134,7 +134,7 @@ return message.channel.send("You don't have the permissions to manage messages, 
     .addField("Time", message.createdAt)
     .addField("Reason", bReason)
     .setThumbnail(bUser.user.displayAvatarURL)
-    .setTimestamp(new Date());
+    .setTimestamp();
   
     let banChannel = message.guild.channels.find(c => c.name === 'logging');
     if(!banChannel) return message.channel.send("I can't find logging channel.");
@@ -171,7 +171,7 @@ let kickEmbed = new Discord.RichEmbed()
 .addField("Time", message.createdAt)
 .addField("Reason", kReason)
 .setThumbnail(kUser.user.displayAvatarURL)
-.setTimestamp(new Date());
+.setTimestamp();
 
 let kickChannel = message.guild.channels.find(c => c.name === 'logging');
 if(!kickChannel) return message.channel.send("I can't find logging channel.");
@@ -209,7 +209,7 @@ client.on('message', async (message) => {
             .addField('Joined At:', `${player.joinedAt}`)
             .addField('Account Created On:', `${player.user.createdAt}`)
             .setThumbnail(iicon)
-            .setTimestamp(new Date());
+            .setTimestamp();
             message.channel.send(userEmbed)
 	}
             });
@@ -228,7 +228,7 @@ client.on('message', async (message) => {
     .addField("Date Of Creation", client.user.createdAt.toLocaleString())
     .addField("Guilds", client.guilds.size)
     .addField("Users", client.users.size)
-    .setTimestamp(new Date());
+    .setTimestamp();
     return message.channel.send(botembed);
   }
 });
@@ -253,7 +253,7 @@ client.on('message', async (message) => {
     .addField('Date Of Server Creation', message.guild.createdAt.toLocaleDateString(), true)
     .addField('Guild Owner', message.guild.owner, true)
     .setThumbnail(sicon) 
-    .setTimestamp(new Date());
+    .setTimestamp();
     message.channel.send(serverembed);
   }
 });
@@ -291,7 +291,9 @@ await rMember.addRole(gRole.id)
 	 let gRole = message.guild.roles.find(r => r.name === role);
 	 message.channel.send(`You've successfully given ${rMember} the ${gRole.name} role!`)
  }
+});
 
+client.on('message', async (message) => {
 	
 if (message.content.startsWith(`${prefix}removerole`)) {
 
@@ -320,7 +322,6 @@ return message.channel.send("You don't have the permissions to manage messages, 
 	 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
 	 let gRole = message.guild.roles.find(r => r.name === role);
    message.channel.send(`You've successfully removed ${rMember}'s ${gRole.name} role!`)
-
  }
 });
 	
