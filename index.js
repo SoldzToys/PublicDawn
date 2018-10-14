@@ -302,13 +302,14 @@ if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 	
 	  let args = message.content.split(/ +/g).slice(1)
-  let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
+	  let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
   if (!rMember) return message.channel.send("You haven't selected/mentioned a user whose role you want to remove.");
-  let role = args.join(" ").slice(22);
-  if(!role) return message.reply("Which role might you want to remove?");
-  let gRole = message.guild.roles.find(`name`, role);
-  if (!gRole) return message.reply("That role doesn't exist or you aren't spelling the role's name right.");
-  if(!rMember.roles.has(gRole.id)) return message.reply("The role you are trying to take away, they don't have.");
+  let role = args.slice(1).join(" ")
+  if(!role) return message.channel.send("Which role might you want to remove?");
+    let gRole = message.guild.roles.find(r => r.name === role)
+  if (!gRole) return message.channel.send("That role doesn't exist or you aren't spelling the role's name right.");
+  if(!rMember.roles.has(gRole.id)) 
+return message.channel.send("The role you are trying to take away, they don't have.");
   await(rMember.removeRole(gRole.id));
 }
   try{
