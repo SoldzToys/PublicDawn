@@ -287,7 +287,7 @@ await rMember.addRole(gRole.id)
 	 let role = args.slice(1).join(" ") 
 	 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
 	 let gRole = message.guild.roles.find(r => r.name === role);
-	 message.channel.send(`You've been given the <@${rMember}> ${gRole.name} role. Those DMs aren't opened though.`)
+	 message.channel.send(`You've been given the <@${rMember}> ${gRole.getOwnPropertyNames.name} role. Those DMs aren't opened though.`)
  }
 });
 	
