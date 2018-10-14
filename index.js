@@ -278,8 +278,18 @@ let gRole = message.guild.roles.find(r => r.name === role)
   if(rMember.roles.has(gRole.id))
   return message.channel.send("They already have this role.");
 await rMember.addRole(gRole.id)
-await rMember.send(`You've been given the ${gRole.name} role.`);
-message.channel.send(`You've been given the <@${rMember}> ${gRole.name} role. Those DMs aren't opened though.`)
+}
+  try {
+    let args = message.content.split(" ").slice(1);
+    let role = args.slice(1).join(" ") 
+    let gRole = message.guild.roles.find(r => r.name === role)
+    await rMember.send(`You've been given the ${gRole.name} role.`);
+ }catch(e){
+	 let args = message.content.split(" ").slice(1);
+	 let role = args.slice(1).join(" ") 
+	 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
+	 let gRole = message.guild.roles.find(r => r.name === role);
+	 message.channel.send(`You've been given the <@${rMember}> ${gRole.name} role. Those DMs aren't opened though.`)
  }
 });
 	
