@@ -273,7 +273,7 @@ let rMember = message.mentions.members.first() || message.guild.members.get(args
   let role = args.slice(1).join(" ") 
   if(!role) message.channel.send("Which role might you want to add?");
   let gRole = message.guild.roles.find(r => r.name === role);
-  if (!gRole) return message.channel.send("I couldn't find them.");
+  if (!gRole) return message.channel.send("That role doesn't exist.");
   if(rMember.roles.has(gRole.id));
   return message.channel.send("They already have this role.");
 await rMember.addRole(gRole.id)
@@ -281,6 +281,7 @@ await rMember.addRole(gRole.id)
   try{
     await rMember.send(`You've been given the ${gRole.name} role.`)
  }catch(e){
+	 let args = message.content.slice(1).split(" ");
 	 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
 	 message.channel.send(`You've been given the <@${rMember.id}> ${gRole.name} role. Those DMs aren't opened though.`)
  }
