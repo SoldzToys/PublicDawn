@@ -276,7 +276,7 @@ let role = args.slice(1).join(" ")
 let gRole = message.guild.roles.find(r => r.name === role)
   if (!gRole) return message.channel.send("That role doesn't exist or you aren't spelling the role's name right.");
   if(rMember.roles.has(gRole.id))
-  return message.channel.send("They already have this role.");
+  return message.channel.send("The role you are trying to give, they already have.");
 await rMember.addRole(gRole.id)
 }
   try {
@@ -289,7 +289,38 @@ await rMember.addRole(gRole.id)
 	 let role = args.slice(1).join(" ") 
 	 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
 	 let gRole = message.guild.roles.find(r => r.name === role);
-	 message.channel.send(`You've successfully given ${rMember} the ${gRole.name} role. Enjoy.`)
+	 message.channel.send(`You've successfully given ${rMember} the ${gRole.name} role!`)
+ }
+
+	
+if (message.content.startsWith(`${prefix}removerole`)) {
+
+
+if(!message.member.hasPermission("MANAGE_MESSAGES"))
+return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
+	
+	  let args = message.content.split(/ +/g).slice(1)
+  let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
+  if (!rMember) return message.channel.send("You haven't selected/mentioned a user whose role you want to remove.");
+  let role = args.join(" ").slice(22);
+  if(!role) return message.reply("Which role might you want to remove?");
+  let gRole = message.guild.roles.find(`name`, role);
+  if (!gRole) return message.reply("That role doesn't exist or you aren't spelling the role's name right.");
+  if(!rMember.roles.has(gRole.id)) return message.reply("The role you are trying to take away, they don't have.");
+  await(rMember.removeRole(gRole.id));
+
+  try{
+    let args = message.content.split(/ +/g).slice(1)
+    let role = args.slice(1).join(" ") 
+    let gRole = message.guild.roles.find(r => r.name === role)
+    await rMember.send(`The ${gRole.name} role has been removed from you!`)
+ }catch(e){
+	 	let args = message.content.split(/ +/g).slice(1)
+	 let role = args.slice(1).join(" ") 
+	 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
+	 let gRole = message.guild.roles.find(r => r.name === role);
+   message.channel.send(`You've successfully removed ${rMember}'s ${gRole.name} role!`)
+
  }
 });
 	
