@@ -268,7 +268,7 @@ if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 
 	
-let args = message.content.slice(1).split(" ");
+let args = message.content.split(/ +/g).slice(1)
 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
  if(!rMember) return message.channel.send("You haven't selected/mentioned a user to give a role.");
 let role = args.slice(1).join(" ") 
@@ -280,12 +280,12 @@ let gRole = message.guild.roles.find(r => r.name === role)
 await rMember.addRole(gRole.id)
 }
   try {
-    let args = message.content.split(" ").slice(1);
+   let args = message.content.split(/ +/g).slice(1)
     let role = args.slice(1).join(" ") 
     let gRole = message.guild.roles.find(r => r.name === role)
     await rMember.send(`You've been given the ${gRole.name} role.`);
  }catch(e){
-	 let args = message.content.split(" ").slice(1);
+	let args = message.content.split(/ +/g).slice(1)
 	 let role = args.slice(1).join(" ") 
 	 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
 	 let gRole = message.guild.roles.find(r => r.name === role);
