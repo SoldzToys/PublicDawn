@@ -267,7 +267,7 @@ if (message.content.startsWith(`${prefix}addrole`)) {
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 	
-let args = message.content.slice(1).split(" ");	
+ let args = message.content.split(" ").slice(1);
 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
 let role = args.slice(1).join(" ") 
 let gRole = message.guild.roles.find(r => r.name === role)
@@ -277,18 +277,8 @@ let gRole = message.guild.roles.find(r => r.name === role)
   if(rMember.roles.has(gRole.id))
   return message.channel.send("They already have this role.");
 await rMember.addRole(gRole.id)
-}
-  try {
-    let args = message.content.split(" ").slice(1);
-    let role = args.slice(1).join(" ") 
-    let gRole = message.guild.roles.find(r => r.name === role)
-    await rMember.send(`You've been given the ${gRole.name} role.`);
- }catch(e){
-	 let args = message.content.split(" ").slice(1);
-	 let role = args.slice(1).join(" ") 
-	 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
-	 let gRole = message.guild.roles.find(r => r.name === role);
-	 message.channel.send(`You've been given the <@${rMember}> ${gRole.name} role. Those DMs aren't opened though.`)
+await rMember.send(`You've been given the ${gRole.name} role.`);
+message.channel.send(`You've been given the <@${rMember}> ${gRole.name} role. Those DMs aren't opened though.`)
  }
 });
 	
