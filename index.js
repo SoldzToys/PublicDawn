@@ -281,6 +281,7 @@ await aMember.addRole(aRole.id)
 }
   try {
    let args = message.content.split(/ +/g).slice(1)
+   let aMember = message.mentions.members.first() || message.guild.members.get(args[0])
     let role = args.slice(1).join(" ") 
     let aRole = message.guild.roles.find(r => r.name === role)
     await aMember.send(`You've been given the ${aRole.name} role.`);
@@ -290,7 +291,11 @@ await aMember.addRole(aRole.id)
 	 let aMember = message.mentions.members.first() || message.guild.members.get(args[0])
 	 let aRole = message.guild.roles.find(r => r.name === role);
 	 return message.channel.send(`You've successfully given ${aMember} the ${aRole.name} role!`)
- } else 
+ } 
+});
+
+client.on('message', async (message) => {
+
 if (message.content.startsWith(`${prefix}removerole`)) {
 
 
@@ -310,11 +315,12 @@ return message.channel.send("The role you are trying to take away, they don't ha
 }
   try{
     let args = message.content.split(/ +/g).slice(1)
-  let role = args.join(" ").slice(22);
+      let role = args.join(" ").slice(22);
+    let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
     let gRole = message.guild.roles.find(r => r.name === role)
     await rMember.send(`The ${gRole.name} role has been removed from you!`)
  }catch(e){
-	 	let args = message.content.split(/ +/g).slice(1)
+	let args = message.content.split(/ +/g).slice(1)
   let role = args.join(" ").slice(22);
   let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
 	 let gRole = message.guild.roles.find(r => r.name === role);
