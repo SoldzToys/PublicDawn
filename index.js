@@ -291,8 +291,8 @@ await aMember.addRole(aRole.id)
 	 let aRole = message.guild.roles.find(r => r.name === role);
 	 return message.channel.send(`You've successfully given ${aMember} the ${aRole.name} role!`)
  }
-
-
+});
+client.on('message', async (message) => {
 
 	
 if (message.content.startsWith(`${prefix}removerole`)) {
