@@ -283,7 +283,7 @@ await rMember.addRole(gRole.id)
     let gRole = message.guild.roles.find(r => r.name === role)
     await rMember.send(`You've been given the ${gRole.name} role.`);
  }catch(e){
-	 let args = message.content.slice(1).split(" ")
+	 let args = message.content.split(" ").slice(1);
 	 let role = args.slice(1).join(" ") 
 	 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
 	 let gRole = message.guild.roles.find(r => r.name === role);
