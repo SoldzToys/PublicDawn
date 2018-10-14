@@ -291,9 +291,9 @@ await rMember.addRole(gRole.id)
 	 let gRole = message.guild.roles.find(r => r.name === role);
 	 message.channel.send(`You've successfully given ${rMember} the ${gRole.name} role!`)
  }
-});
 
-client.on('message', async (message) => {
+
+
 	
 if (message.content.startsWith(`${prefix}removerole`)) {
 
@@ -310,7 +310,7 @@ return message.channel.send("You don't have the permissions to manage messages, 
   if (!gRole) return message.reply("That role doesn't exist or you aren't spelling the role's name right.");
   if(!rMember.roles.has(gRole.id)) return message.reply("The role you are trying to take away, they don't have.");
   await(rMember.removeRole(gRole.id));
-
+}
   try{
     let args = message.content.split(/ +/g).slice(1)
     let role = args.slice(1).join(" ") 
