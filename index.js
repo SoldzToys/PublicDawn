@@ -289,7 +289,7 @@ await rMember.addRole(gRole.id)
 	 let role = args.slice(1).join(" ") 
 	 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
 	 let gRole = message.guild.roles.find(r => r.name === role);
-	 message.channel.send(`You've successfully given ${rMember} the ${gRole.name} role!`)
+	 return message.channel.send(`You've successfully given ${rMember} the ${gRole.name} role!`)
  }
 
 
@@ -302,8 +302,9 @@ if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 	
 	  let args = message.content.split(/ +/g).slice(1)
-	  let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
-  if (!rMember) return message.channel.send("You haven't selected/mentioned a user whose role you want to remove.");
+  let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
+  if (!rMember)
+  return message.channel.send("You haven't selected/mentioned a user whose role you want to remove.");
   let role = args.slice(1).join(" ")
   if(!role) return message.channel.send("Which role might you want to remove?");
     let gRole = message.guild.roles.find(r => r.name === role)
@@ -322,7 +323,7 @@ return message.channel.send("The role you are trying to take away, they don't ha
 	 let role = args.slice(1).join(" ") 
 	 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
 	 let gRole = message.guild.roles.find(r => r.name === role);
-   message.channel.send(`You've successfully removed ${rMember}'s ${gRole.name} role!`)
+   return message.channel.send(`You've successfully removed ${rMember}'s ${gRole.name} role!`)
  }
 });
 	
