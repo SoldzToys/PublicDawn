@@ -263,11 +263,11 @@ client.on('message', async (message) => {
 	
 if (message.content.startsWith(`${prefix}addrole`)) {
 
-let args = message.content.slice(1).split(" ");	
+
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 	
-
+let args = message.content.slice(1).split(" ");	
 let rMember = message.mentions.members.first() || message.guild.members.get(args[0])
  if(!rMember) return message.channel.send("You haven't selected/mentioned a user to give a role.");
   let role = args.slice(1).join(" ") 
