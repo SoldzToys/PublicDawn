@@ -241,7 +241,7 @@ client.on('message', async (message) => {
     let server = message.guild.name;
     let serverembed = new Discord.RichEmbed()
     .setTitle("Server Information")
-    .setDescription(`Infomration on ${server}:`)
+    .setDescription(`Information on ${server}:`)
     .setThumbnail() 
     .setColor("#c2dbea")
     .addField('Guild ID', message.guild.id, true)
