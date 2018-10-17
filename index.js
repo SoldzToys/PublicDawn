@@ -146,10 +146,7 @@ return message.channel.send("You don't have the permissions to manage messages, 
 	
 }	
 
-});
 
-client.on('message', async (message) => {
-	
 if (message.content.startsWith(`${prefix}kick`)) {
 	
 let args = message.content.slice(1).split(" ");
@@ -183,8 +180,6 @@ return message.channel.send(`${kUser} has been kicked from the server!`)
 
 }
 	
-});
-client.on('message', async (message) => {
 	
 	if (message.content.startsWith(`${prefix}userinfo`)) {
 
@@ -212,9 +207,7 @@ client.on('message', async (message) => {
             .setTimestamp();
             message.channel.send(userEmbed)
 	}
-            });
-
-client.on('message', async (message) => {
+	
 	
 	if (message.content.startsWith(`${prefix}botinfo`)) {
 
@@ -231,9 +224,6 @@ client.on('message', async (message) => {
     .setTimestamp();
     return message.channel.send(botembed);
   }
-});
-
-client.on('message', async (message) => {
 	
 	if (message.content.startsWith(`${prefix}serverinfo`)) {
 		
@@ -256,11 +246,7 @@ client.on('message', async (message) => {
     .setTimestamp();
     message.channel.send(serverembed);
   }
-});
- 
 
-client.on('message', async (message) => {
-	
 if (message.content.startsWith(`${prefix}addrole`)) {
 
 
@@ -292,9 +278,9 @@ await aMember.addRole(aRole.id)
 	 let aRole = message.guild.roles.find(r => r.name === role);
 	 return message.channel.send(`You've successfully given ${aMember} the ${aRole.name} role!`)
  } 
-});
 
-client.on('message', async (message) => {
+
+
 
 if (message.content.startsWith(`${prefix}removerole`)) {
 
