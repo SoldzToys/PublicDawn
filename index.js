@@ -250,11 +250,11 @@ return message.channel.send(`${kUser} has been kicked from the server!`)
 if (message.content.startsWith(`${prefix}addrole`)) {
 
 
+let args = message.content.split(/ +/g).slice(1)
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
-
 	
-let args = message.content.split(/ +/g).slice(1)
+
 let aMember = message.mentions.members.first() || message.guild.members.get(args[0])
  if(!aMember) return message.channel.send("You haven't selected/mentioned a user to give a role.");
 let role = args.slice(1).join(" ") 
@@ -285,10 +285,11 @@ await aMember.addRole(aRole.id)
 if (message.content.startsWith(`${prefix}removerole`)) {
 
 
+let args = message.content.split(/ +/g).slice(1)
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 	
-	  let args = message.content.split(/ +/g).slice(1)
+
   let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
   if (!rMember) return message.channel.send("You haven't selected/mentioned a user whose role you want to remove.");
   let role = args.join(" ").slice(22);
