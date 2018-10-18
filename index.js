@@ -313,6 +313,53 @@ return message.channel.send("The role you are trying to take away, they don't ha
 	 let gRole = message.guild.roles.find(r => r.name === role);
    return message.channel.send(`You've successfully removed ${rMember}'s ${gRole.name} role!`)
  }
+	    if (message.content.startsWith(`${prefix}invite`)) {
+      if (message.channel.type == "dm") return;
+
+    message.channel.createInvite().then(a =>
+    message.author.send(a.toString()))
+    message.channel.send(`📥 Invite Sucessfully sent to your DMs. `)
+    
+  }
+	
+if(!message.member.hasPermission("MANAGE_MESSAGES"))
+return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
+	let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+if(!tomute) return message.reply("I couldn't find that user.");
+if(tomute.hasPermission("MANAGE_MESSAGES"))
+return message.reply("This user cannot be muted.");
+let muterole = message.guild.roles.find(r => r.name === `muted`);
+//start of role
+if(!muterole){
+  try{
+  muterole = await message.guild.createRole({
+    name: "muted",
+    color: "#23272a",
+    permission: []
+  })
+  message.guild.channels.forEach(async (channel, id) => {
+    await channel.overwritePermissions(muterole, {
+      SEND_MESSAGES: false,
+      ADD_REACTIONS: false
+    });
+  });
+
+  }catch(e){
+    console.log(e.stack);
+  }
+}
+//end of role
+let mutetime = args[1];
+if(!mutetime) return message.reply("You didn't put a time-limit!")
+
+await(tomute.addRole(muterole.id));
+message.channel.send(`<@${tomute.id}> just got themselves muted for ${ms(ms(mutetime))}`);
+
+setTimeout(function(){
+  tomute.removeRole(muterole.id)
+  message.channel.send(`<@${tomute.id}> has been unmuted!`);
+}, ms(mutetime));
+	
 });
 	
 client.login(process.env.BOT_TOKEN);
