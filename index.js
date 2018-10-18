@@ -322,10 +322,11 @@ return message.channel.send("The role you are trying to take away, they don't ha
     
   }
 	
+if (message.content.startsWith(`${prefix}mute`)) {	
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 	let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-if(!tomute) return message.reply("I couldn't find that user.");
+if(!tomute) return message.reply("You haven't selected/mentioned a user who you want to mute.");
 if(tomute.hasPermission("MANAGE_MESSAGES"))
 return message.reply("This user cannot be muted.");
 let muterole = message.guild.roles.find(r => r.name === `muted`);
