@@ -18,7 +18,7 @@ client.on('message', async (message, member) => {
     let clientping = new Date() - message.createdAt;
     let msgping2 = new Date() - msgping1;
     let pingembed = new Discord.RichEmbed()
-       .setColor("#ea9b67")
+       .setColor("#dcc2ea")
         .addField('🏓 Your Ping:', Math.floor(client.ping) + 'ms')
         .addField('🏓 Bot Ping:', Math.floor(clientping) + 'ms')
         .setTimestamp()
@@ -32,11 +32,11 @@ client.on('message', async (message, member) => {
     let avatarEmbed = new Discord.RichEmbed()
     .setAuthor(`${user.tag}'s Profile Picture`, `${user.displayAvatarURL}`)
     .setImage(user.displayAvatarURL)
-    .setColor("#ea9b67");
+    .setColor("#dcc2ea");
     return message.channel.send(avatarEmbed);
 }
 	
-if (message.content.startsWith(`${prefix}ban`)) {
+if (message.content.toLowerCase().startsWith(`${prefix}ban`)) {
 
 
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
@@ -71,12 +71,13 @@ return message.channel.send("You don't have the permissions to manage messages, 
 }	
 
 
-if (message.content.startsWith(`${prefix}kick`)) {
+if (message.content.toLowerCase().startsWith(`${prefix}kick`)) {
 	
-let args = message.content.slice(1).split(" ");
+
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
-	
+
+let args = message.content.slice(1).split(" ");
 let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 if(!kUser) return message.channel.send("You haven't selected/mentioned a user to kick.");
 let kReason = args.slice(1).join(" ") || "None";
@@ -105,14 +106,13 @@ return message.channel.send(`${kUser} has been kicked from the server!`)
 }
 	
 	
-	if (message.content.startsWith(`${prefix}userinfo`)) {
+if (message.content.toLowerCase().startsWith(`${prefix}userinfo`)) {
 
  let member = message.mentions.users.first() || message.author
             let player = message.mentions.members.first() || message.member
-            let user = message.mentions.users.first();
+            let user = player.user
             let iicon = player.user.displayAvatarURL;
             let roles = message.mentions.members.first().roles.map(role => role).join(" ");
-        if(!user) return message.channel.send("You haven't selected/mentioned a user whose info you want to see.");
             let userEmbed = new Discord.RichEmbed()
             .setAuthor(`${user.username}'s Info`, user.displayAvatarURL)
             .setThumbnail(user.displayAvatarURL)
@@ -133,53 +133,59 @@ return message.channel.send(`${kUser} has been kicked from the server!`)
 	}
 	
 	
-	if (message.content.startsWith(`${prefix}botinfo`)) {
+if (message.content.toLowerCase().startsWith(`${prefix}botinfo`)) {
 
+    let player = message.mentions.members.first() || message.member
     let bicon = client.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
-    .setTitle("Bot Information")
-    .setColor("#dcc2ea")
+    .setTitle("🤖 Bot Information")
+    .setDescription("Information on WeatherDawn:")
+    .setColor("#FFC0CB")
     .setThumbnail(bicon)
-    .addField("Bot Name", client.user.username)
-    .addField("Bot Tag", client.user.tag)
-    .addField("Date Of Creation", client.user.createdAt.toLocaleString())
-    .addField("Guilds", client.guilds.size)
-    .addField("Users", client.users.size)
+    .addField("Bot ID", client.user.id, true)
+    .addField("Bot Tag", client.user.tag, true)
+    .addField('Bot Nickname', `${player.displayName}`, true) 
+    .addField("Serving", `${client.users.size} users`, true)
+    .addField("Date Of Creation", client.user.createdAt.toLocaleDateString(), true)
+    .addField("Uptime", moment.duration(client.uptime).format('d[d ]h[h ]m[m ]s[s]'), true)
+    .setFooter("Created By @Dawn.Bots.INC", client.user.displayAvatarURL)
     .setTimestamp();
     return message.channel.send(botembed);
-  }
-	
-	if (message.content.startsWith(`${prefix}serverinfo`)) {
+  }    
+if (message.content.toLowerCase().startsWith(`${prefix}serverinfo`)) {
 		
     let sicon = message.guild.iconURL;
     let server = message.guild.name;
     let serverembed = new Discord.RichEmbed()
-    .setTitle("Server Information")
+    .setTitle("👑 Server Information")
     .setDescription(`Information on ${server}:`)
-    .setThumbnail() 
-    .setColor("#c2dbea")
-    .addField('Guild ID', message.guild.id, true)
-    .addField('Guild Name', message.guild.name, true)
-    .addField('Guild Channel Total', message.guild.channels.size, true)
-    .addField('Guild Member Total', message.guild.memberCount, true)
-    .addField('Guild Role Total', message.guild.roles.size, true)
-    .addField('Guild Region', message.guild.region, true)
-    .addField('Date Of Server Creation', message.guild.createdAt.toLocaleDateString(), true)
-    .addField('Guild Owner', message.guild.owner, true)
+    .setColor("#FFC0CB")
+    .addField('Server ID', message.guild.id, true)
+    .addField('Server Name', message.guild.name, true)
+    .addField('Humans', `${message.guild.members.filter(m => !m.user.bot).size}`, true)
+    .addField('Bots', `${message.guild.members.filter(m => m.user.bot).size}`, true)
+    .addField('Member Total', message.guild.memberCount, true)
+    .addField('Role Total', message.guild.roles.size, true)
+    .addField('Channel Total', message.guild.channels.size, true)
+    .addField('Region', message.guild.region, true)
+    .addField('Server Made', message.guild.createdAt.toLocaleDateString(), true)
+    .addField('Server Owner', message.guild.owner, true)
+    .setFooter(`${server}`, sicon)
     .setThumbnail(sicon) 
     .setTimestamp();
     message.channel.send(serverembed);
   }
+	
 
-if (message.content.startsWith(`${prefix}addrole`)) {
+if (message.content.toLowerCase().startsWith(`${prefix}addrole`)) {
 
 
-let args = message.content.split(/ +/g).slice(1)
+
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 	
-
-let aMember = message.mentions.members.first() || message.guild.members.get(args[0])
+let args = message.content.split(/ +/g).slice(1)
+let aMember = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
  if(!aMember) return message.channel.send("You haven't selected/mentioned a user to give a role.");
 let role = args.slice(1).join(" ") 
   if(!role) return message.channel.send("Which role might you want to add?");
@@ -191,14 +197,14 @@ await aMember.addRole(aRole.id)
 }
   try {
    let args = message.content.split(/ +/g).slice(1)
-   let aMember = message.mentions.members.first() || message.guild.members.get(args[0])
+   let aMember = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     let role = args.slice(1).join(" ") 
     let aRole = message.guild.roles.find(r => r.name === role)
     await aMember.send(`You've been given the ${aRole.name} role.`);
  }catch(e){
 	let args = message.content.split(/ +/g).slice(1)
 	 let role = args.slice(1).join(" ") 
-	 let aMember = message.mentions.members.first() || message.guild.members.get(args[0])
+	 let aMember = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 	 let aRole = message.guild.roles.find(r => r.name === role);
 	 return message.channel.send(`You've successfully given ${aMember} the ${aRole.name} role!`)
  } 
@@ -206,14 +212,14 @@ await aMember.addRole(aRole.id)
 
 
 
-if (message.content.startsWith(`${prefix}removerole`)) {
+if (message.content.toLowerCase().startsWith(`${prefix}removerole`)) {
 
 
-let args = message.content.split(/ +/g).slice(1)
+
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 	
-
+let args = message.content.split(/ +/g).slice(1)
   let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
   if (!rMember) return message.channel.send("You haven't selected/mentioned a user whose role you want to remove.");
   let role = args.join(" ").slice(22);
@@ -237,16 +243,16 @@ return message.channel.send("The role you are trying to take away, they don't ha
 	 let gRole = message.guild.roles.find(r => r.name === role);
    return message.channel.send(`You've successfully removed ${rMember}'s ${gRole.name} role!`)
  }
-	    if (message.content.startsWith(`${prefix}invite`)) {
+	     if (message.content.toLowerCase().startsWith(`${prefix}serverinvite`)) {
       if (message.channel.type == "dm") return;
 
     message.channel.createInvite().then(a =>
     message.author.send(a.toString()))
-    message.channel.send(`📥 Invite Sucessfully sent to your DMs. `)
+    message.channel.send(`📩 Invite Sucessfully sent to your DMs. `)
     
   }
 	
-if (message.content.startsWith(`${prefix}mute`)) {	
+if (message.content.toLowerCase().startsWith(`${prefix}mute`)) {	
 if(!message.member.hasPermission("MANAGE_MESSAGES"))
 return message.channel.send("You don't have the permissions to manage messages, you will not be able to do this command.");
 	let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
