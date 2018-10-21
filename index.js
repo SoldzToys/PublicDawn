@@ -6,7 +6,7 @@ const { prefix, token } = require('./botconfig.json');
 const ms = require("ms");
 
 client.on(`ready`, () => {
-  console.log(`I am super-ready!`);
+  console.log(`Public Dawn is online!`);
 client.user.setActivity('Daybreak: Season 1');
 
 });
