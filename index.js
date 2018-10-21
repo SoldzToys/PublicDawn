@@ -7,7 +7,7 @@ const ms = require("ms");
 
 client.on(`ready`, () => {
   console.log(`I am super-ready!`);
-client.user.setActivity('Before Daybreak: Season 1');
+client.user.setActivity('Daybreak: Season 1');
 
 });
 
