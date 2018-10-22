@@ -7,7 +7,7 @@ const ms = require("ms");
 
 client.on(`ready`, () => {
   console.log(`Public Dawn is online!`);
-client.user.setActivity('Day-break: Season 1');
+client.user.setActivity('Daybreak: Season 1');
 
 });
 
