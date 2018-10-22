@@ -4,7 +4,7 @@ const request = require('snekfetch');
 const config = require('./botconfig.json');
 const { prefix, token } = require('./botconfig.json');
 const ms = require("ms");
-
+ 
 client.on(`ready`, () => {
   console.log(`Public Dawn is online!`);
 client.user.setActivity('Daybreak: Season 1');
